@@ -8,4 +8,9 @@ class MoviesController < ApplicationController
     all_movies = Movie.all
     render json: all_movies.as_json
   end
+
+  def movie_year
+    movie_year = Movie.where(year: params["year"])
+    render json: movie_year.as_json
+  end
 end
