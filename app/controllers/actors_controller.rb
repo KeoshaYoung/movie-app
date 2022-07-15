@@ -15,8 +15,9 @@ class ActorsController < ApplicationController
       last_name: params["last_name"],
       known_for: params["known_for"],
     )
-    actor.save
-    render json: actor.as_json
+    if actor.save
+      render json: actor.as_json
+    else render json: { errors: actor.errors.full_messages }, status: 418     end
   end
 
   def update
